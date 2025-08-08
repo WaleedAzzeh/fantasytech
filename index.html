@@ -1,130 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="description" content="Fantasy Tech offers web development, SEO, AI, digital marketing & more. Transform your ideas into digital solutions." />
   <title>Fantasy Tech</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Inknut+Antiqua:wght@700&amp;display=swap" rel="stylesheet">
+  <link rel="icon" href="photos/favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inknut+Antiqua:wght@700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Montserrat', sans-serif; background: #000B42; color: white; line-height: 1.4; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #000B42;
+      color: white;
+      line-height: 1.4;
+    }
     img { max-width: 100%; height: auto; }
 
-    /* Header */
-    header { position: fixed; top: 0; left: 0; right: 0; background: white; padding: 30px 50px; display: flex; align-items: center; justify-content: space-between; z-index:1000; transition: bg 0.3s, padding 0.3s, box-shadow 0.3s; }
-    header.transparent { background: rgba(255,255,255,0.85); box-shadow: 0 2px 10px rgba(0,0,0,0.1); backdrop-filter: blur(6px); padding: 15px 50px; }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 30px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+      transition: background 0.3s, padding 0.3s, box-shadow 0.3s;
+    }
+    header.transparent {
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      backdrop-filter: blur(6px);
+      padding: 15px 50px;
+    }
     header .logo img { height: 40px; max-width: 160px; }
     nav { display: flex; gap: 50px; }
-    nav a { color: black; font-weight:700; text-decoration:none; font-size:15px; }
-    nav a:hover { color:#2B4EFF; }
+    nav a {
+      color: black;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 15px;
+    }
+    nav a:hover { color: #2B4EFF; }
 
-    .menu-toggle { display: none; flex-direction: column; cursor: pointer; z-index:1100; }
-    .menu-toggle span { width:25px; height:3px; background:black; margin:4px 0; transition: all 0.3s; }
-.mobile-nav {
-  position: fixed;
-  top: 0;
-  right: -100%;
-  width: 70%;
-  height: 100vh;
-  background-color: #ffffff;
-  padding: 60px 30px;
-  flex-direction: column;
-  display: flex; /* always flex for smoother animation */
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(100%);
-  transition: transform 0.4s ease, opacity 0.4s ease;
-  z-index: 1050;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-.mobile-nav.open {
-  right: 0;
-  transform: translateX(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-.mobile-nav a {
-  color: #000000; /* Black text for readability */
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 18px;
-  margin: 20px 0;
-}
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1100;
+    }
+    .menu-toggle span {
+      width: 25px;
+      height: 3px;
+      background: black;
+      margin: 4px 0;
+      transition: all 0.3s;
+    }
 
-    /* Hero */
-    .hero { background:url('photos/hero.png') center/cover no-repeat; padding:178px 50px; text-align:left; }
-    .hero h1 { font-size:64px; font-weight:700; margin-bottom:40px; }
-    .hero p { font-size:24px; margin-bottom:40px; font-weight:400; }
-    .hero-buttons { display:flex; gap:20px; flex-wrap: wrap; }
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      background-color: #ffffff;
+      padding: 60px 30px;
+      flex-direction: column;
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(100%);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      z-index: 1050;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .mobile-nav.open {
+      right: 0;
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-nav a {
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 18px;
+      margin: 20px 0;
+    }
 
-    .btn { text-decoration: none; padding:10px 30px; font-size:16px; font-weight:700; border-radius:10px; border:1px solid white; color:white; cursor:pointer; display:inline-block; text-align:center; }
-    .btn.primary { background:#2B4EFF; border-color:#2B4EFF; }
-    .btn.primary:hover { background:#4A6EFF; border-color:#4A6EFF; transform:scale(1.05); }
-    .btn.outline { background:transparent; }
-    .btn.outline:hover { background:white; color:#2B4EFF; transform:scale(1.05); }
+    .hero {
+      background: url('photos/BACKGROUND.png') center/cover no-repeat;
+      padding: 178px 50px;
+      text-align: left;
+      animation: fadeInUp 1s ease-in-out both;
+    }
+    .hero h1 {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .hero p {
+      font-size: 24px;
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-    /* Sections */
-    .section { padding:80px 20px; }
-    .section h2 { font-size:48px; font-weight:700; text-align:center; margin-bottom:60px; }
+    .btn {
+      text-decoration: none;
+      padding: 10px 30px;
+      font-size: 16px;
+      font-weight: 700;
+      border-radius: 10px;
+      border: 1px solid white;
+      color: white;
+      cursor: pointer;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn.primary {
+      background: #2B4EFF;
+      border-color: #2B4EFF;
+    }
+    .btn.primary:hover {
+      background: #4A6EFF;
+      border-color: #4A6EFF;
+      transform: scale(1.05);
+    }
+    .btn.outline {
+      background: transparent;
+    }
+    .btn.outline:hover {
+      background: white;
+      color: #2B4EFF;
+      transform: scale(1.05);
+    }
 
-    .about { display:flex; flex-wrap: wrap; gap:40px; align-items:center; justify-content:center; }
-    .about-text, .about-img { flex:1; min-width:300px; }
-    .about-img img { display:block; margin:auto; }
+    .section { padding: 80px 20px; }
+    .section h2 {
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 60px;
+    }
 
-    .clients-slider { overflow-x:auto; white-space: nowrap; padding:20px 0; align-items: center; display: flex;}
-    .clients-slider::-webkit-scrollbar { display:none; }
-    .clients-slider img {   object-fit: contain; /* keep aspect ratio */ width:220px; margin:0 10px; display:inline-block; }
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-text, .about-img {
+      flex: 1;
+      min-width: 300px;
+    }
 
-    .services { background:url('photos/services-background.jpg') center/cover no-repeat; opacity:0.95; color:white; }
-    .services-container { display:flex; flex-wrap: wrap; gap:30px; justify-content:center; }
-    .service-card { background:white; color:black; width:300px; padding:20px; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
-    .service-card h3 { font-size:20px; font-weight:700; margin-bottom:10px; }
-    .service-card p { font-size:18px; line-height:1.45; }
+    .clients-slider {
+      overflow-x: auto;
+      white-space: nowrap;
+      padding: 20px 0;
+      display: flex;
+    }
+    .clients-slider::-webkit-scrollbar { display: none; }
+    .clients-slider img {
+      object-fit: contain;
+      width: 220px;
+      margin: 0 10px;
+      display: inline-block;
+    }
 
-    .container { padding:80px 20px; max-width:1200px; margin:0 auto; color:white; font-size:32px; text-align:center; }
-    .gallery { display:flex; overflow-x:auto; gap:16px; padding:50px 10px; }
-    .gallery img { width:220px; border-radius:6px; }
-    .content-block { margin-top:40px; }
-    .content-block h2 { font-size:28px; margin-top:10px; }
-    .content-block p { font-size:18px; color:rgba(255,255,255,0.75); }
-    .content-block img { border-radius:8px; }
+    .services {
+      background: url('photos/services-background.jpg') center/cover no-repeat;
+      opacity: 0.95;
+      color: white;
+    }
+    .services h2 {
+      color: white;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    }
+    .services-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .service-card {
+      background: white;
+      color: black;
+      width: 300px;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-    .cta { text-align:center; padding:80px 20px; }
-    .cta h2 { font-size:60px; margin-bottom:16px; }
-    .cta p { font-size:20px; margin-bottom:24px; }
-    .cta button {font-size:20px; padding:12px 24px; color:white; background:transparent; border:1px solid white; border-radius:8px; cursor:pointer;   font-family: 'Montserrat', sans-serif;}
-    .cta button:hover { background:white; color:#000B42; }
+    .container {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      color: white;
+      font-size: 32px;
+      text-align: center;
+    }
 
-    footer { background:url('photos/services-background.jpg') center/cover no-repeat; background-color:white; padding:60px 20px; color:black; }
-    .footer-container { display:flex; flex-wrap: wrap; justify-content: space-between; gap:40px; max-width:1200px; margin:0 auto; }
-    .footer-brand h3 { font-size:24px; font-weight:700; }
-    .footer-brand p { font-size:16px; line-height:1.45; margin-top:8px; }
-    .footer-section { flex:1 1 130px; display:flex; flex-direction:column; gap:8px; }
-    .footer-section a { font-size:16px; font-weight:500; color:rgba(0,0,0,0.55); text-decoration:none; }
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 16px;
+      padding: 50px 10px;
+    }
+    .gallery img {
+      width: 220px;
+      border-radius: 6px;
+    }
 
-    .whatsapp-button { position:fixed; bottom:20px; right:20px; width:60px; height:60px; background:#25d366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 6px rgba(0,0,0,0.3); cursor:pointer; }
-    .whatsapp-button img { width:32px; }
+    .content-block {
+      margin-top: 40px;
+    }
+    .content-block img {
+      border-radius: 8px;
+    }
+    .content-block h2 {
+      font-size: 60px;
+      margin-top: 10px;
+      margin-bottom: 80px;
 
-    /* Mobile */
-    @media (max-width:768px) {
-      header { padding:15px 20px; }
-      .menu-toggle { display:flex; }
-      nav { display:none; }
-      .hero { padding:100px 20px; text-align:center; }
-      .hero h1 { font-size:36px; }
-      .hero p { font-size:18px; }
-      .hero-buttons { justify-content:center; }
+    }
+    .content-block p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.75);
+    }
 
-      .about { flex-direction:column; text-align:center; }
-      .services-container { flex-direction:column; align-items:center; }
-      .footer-container { flex-direction:column; gap:30px; text-align:center; }
+    .cta {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cta h2 {
+      font-size: 60px;
+      margin-bottom: 16px;
+    }
+    .cta p {
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .cta button {
+      font-size: 20px;
+      padding: 12px 24px;
+      color: white;
+      background: transparent;
+      border: 1px solid white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 80px; /* ✅ Added for equal spacing below the button */
+    }
+    .cta button:hover {
+      background: white;
+      color: #000B42;
+    }
+
+   footer {
+      background: url('photos/services-background.jpg') center/cover no-repeat;
+      background-color: white;
+      padding: 60px 20px;
+      color: black;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-brand h3 {
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .footer-brand h3 a {
+      color: black;
+      font-size: 24px;
+      font-weight: 700;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .footer-brand p {
+      font-size: 16px;
+      line-height: 1.45;
+      margin-top: 8px;
+    }
+
+    .footer-section {
+      flex: 1 1 130px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ✅ Fix for footer links */
+    footer a {
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.7);
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    footer a:hover {
+      color: #2B4EFF;
+    }
+
+    .whatsapp-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+    .whatsapp-button img {
+      width: 32px;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 15px 20px; }
+      .menu-toggle { display: flex; }
+      nav { display: none; }
+      .hero { padding: 100px 20px; text-align: center; }
+      .hero h1 { font-size: 36px; }
+      .hero p { font-size: 18px; }
+      .hero-buttons { justify-content: center; }
+      .about { flex-direction: column; text-align: center; }
+      .services-container { flex-direction: column; align-items: center; }
+      .footer-container { flex-direction: column; gap: 30px; text-align: center; }
     }
   </style>
 </head>
 <body>
+  <body id="top">
+  <!-- Header -->
   <header id="header">
-    <div class="logo"><img src="photos/Pagelogo.png" alt="Fantasy Tech Logo"></div>
+    <div class="logo">
+      <a href="#top">
+        <img src="photos/logo.png" alt="Fantasy Tech Logo">
+      </a>
+    </div>
+
     <nav>
       <a href="#hero">Home</a>
       <a href="#about">About</a>
@@ -132,7 +375,9 @@
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact Us</a>
     </nav>
-    <div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </div>
     <div class="mobile-nav" id="mobileMenu">
       <a href="#hero" onclick="toggleMenu()">Home</a>
       <a href="#about" onclick="toggleMenu()">About</a>
@@ -142,6 +387,7 @@
     </div>
   </header>
 
+  <!-- Hero -->
   <section id="hero" class="hero">
     <h1>Transforming Ideas Into IT Solutions</h1>
     <p>Providing world wide survival strategies to ensure proactive domination at the end of the day fueling digital transformation with expert solutions.</p>
@@ -151,19 +397,21 @@
     </div>
   </section>
 
+  <!-- About -->
   <section id="about" class="section about">
     <div class="about-text">
       <h2>About Us</h2>
       <h3>Where Innovation Meets Impact</h3>
       <p>We are a passionate team of experts and creative thinkers, dedicated to transforming simple ideas into powerful digital solutions. With a strong foundation in IT services and digital marketing, we combine innovation with precision to deliver impactful results. Our approach is driven by efficiency, guided by effectiveness, and focused on helping businesses grow and thrive in the digital world. Whether you're looking to build a standout online presence or optimize your technology infrastructure, we’re here to bring your vision to life.</p>
     </div>
-    <div class="about-img"><img src="photos/about.png" alt="About Image"></div>
+    <div class="about-img"><img src="photos/333-01.png" alt="About Fantasy Tech" loading="lazy" /></div>
   </section>
 
+  <!-- Clients -->
   <section id="clients" class="section">
     <h2>Our Clients</h2>
     <div class="clients-slider">
-      <img src="photos/aljood logo-01.png" alt="Client 1">
+      <img src="photos/aljoodlogo-01.png" alt="Client 1">
       <img src="photos/signature logo-01 (1).png" alt="Client 2">
       <img src="photos/fjf logos-01.png" alt="Client 3">
       <img src="photos/concorde jordan-01.png" alt="Client 4">
@@ -175,8 +423,9 @@
     </div>
   </section>
 
+  <!-- Services -->
   <section id="services" class="section services">
-    <h2 style="color: black;">Our Services</h2>
+    <h2>Our Services</h2>
     <div class="services-container">
       <div class="service-card"><h3>Digital Marketing & SEO</h3><p>Grow your online presence ... increase conversions.</p></div>
       <div class="service-card"><h3>Social Media Management</h3><p>Manage your social media presence ... drive real results.</p></div>
@@ -189,57 +438,73 @@
     </div>
   </section>
 
+  <!-- Portfolio -->
   <div id="portfolio" class="container">
     <h1>Portfolio</h1>
     <div class="gallery">
-      <img src="photos/484410045_1057030486457891_8834374175598118333_n.jpg" alt="Project 1">
+      <img src="photos/post size EN (10).png" alt="Project 1">
       <img src="photos/484628894_1056354903192116_8537412631593173427_n.jpg" alt="Project 2">
       <img src="photos/484634648_1057543973073209_677542055828154137_n.jpg" alt="Project 3">
       <img src="photos/484782081_1056371683190438_1029042321188982455_n.jpg" alt="Project 4">
       <img src="photos/474273056_455487817630426_7627841862915343214_n.jpg" alt="Project 5">
-      <img src="photos/474505052_454952791017262_85238681759134434458913377_n.jpg" alt="Project 6">
+      <img src="photos/post size en sami yusuf (2) (1).png" alt="Project 6">
       <img src="photos/476467329_466533293192545_8070040607508370370_n.jpg" alt="Project 7">
       <img src="photos/14.5.2024.png" alt="Project 8">
     </div>
 
     <div class="content-block">
-      <img src="photos/portfolio1.jpeg" alt="Content Image 1">
-      <h2>A really compelling headline</h2>
-      <p>Call out a feature, benefit, or value ... then link to a page where people can learn more about it.</p>
-    </div>
-
-    <div class="content-block">
-      <img src="photos/portfolio2.jpeg" alt="Content Image 2">
-      <h2>Another compelling headline</h2>
-      <p>Another feature or value call‑out, with a link to more details.</p>
-    </div>
-
-    <div class="cta" id="contact">
-      <h2>Grow your business now!</h2>
-      <p>Chat with us to create the best plan.</p>
-      <button onclick="window.open('https://wa.me/+971542504417','_blank')">Chat with us</button>
+      <h2>Results from a paid social campaign</h2>
+      <img src="photos/portfolio1.jpeg" alt="Content Image 1" loading="lazy" />
+      <img src="photos/portfolio2.jpeg" alt="Content Image 1" loading="lazy" />
     </div>
   </div>
 
+  <!-- CTA -->
+  <div class="cta" id="contact">
+    <h2>Grow your business now!</h2>
+    <p>Chat with us to create the best plan.</p>
+    <button onclick="window.open('https://wa.me/+971542504417','_blank')">Chat with us</button>
+  </div>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-container">
       <div class="footer-brand">
-        <h3>FANTASY TECH</h3>
-        <p>Descriptive line about what your company does.</p>
+        <h3><a href="#top">FANTASY TECH</a></h3>
+        <p>Empowering business to thrive in a connected world.</p>
       </div>
-      <div class="footer-section"><h4>Features</h4><a href="#">Core features</a><a href="#">Pro experience</a><a href="#">Integrations</a></div>
-      <div class="footer-section"><h4>Learn more</h4><a href="#">Blog</a><a href="#">Case studies</a><a href="#">Customer stories</a><a href="#">Best practices</a></div>
-      <div class="footer-section"><h4>Support</h4><a href="#">Contact</a><a href="#">Support</a><a href="#">Legal</a></div>
+      <div class="footer-section">
+        <h4>Features</h4>
+        <a href="#">Core features</a>
+        <a href="#">Pro experience</a>
+        <a href="#">Integrations</a>
+      </div>
+      <div class="footer-section">
+        <h4>Learn more</h4>
+        <a href="#">Blog</a>
+        <a href="#">Case studies</a>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <a href="#">Contact</a>
+        <a href="#">Support</a>
+      </div>
     </div>
   </footer>
 
-  <a class="whatsapp-button" href="https://wa.me/+971542504417" target="_blank" title="Chat on WhatsApp"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp"></a>
+  <!-- WhatsApp Button -->
+  <a class="whatsapp-button" href="https://wa.me/+971542504417" target="_blank" title="Chat on WhatsApp">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon" />
+  </a>
 
   <script>
-    function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
     window.addEventListener('scroll', () => {
       document.getElementById('header').classList.toggle('transparent', window.scrollY > 50);
     });
   </script>
+
 </body>
 </html>
